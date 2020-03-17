@@ -20,7 +20,6 @@ vector<int> maximumPerimeterTriangle(vector<int> sticks)
 
 int main()
 {
-    ofstream fout(getenv("OUTPUT_PATH"));
 
     int n;
     cin >> n;
@@ -44,17 +43,17 @@ int main()
 
     for (int i = 0; i < result.size(); i++)
     {
-        fout << result[i];
+        // fout << result[i];
 
         if (i != result.size() - 1)
         {
-            fout << " ";
+            // fout << " ";
         }
     }
 
-    fout << "\n";
+    // fout << "\n";
 
-    fout.close();
+    // fout.close();
 
     return 0;
 }
