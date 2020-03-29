@@ -1,21 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
-int main()
+int lis(int arr[], int n)
 {
-    int arr[] = {-1, 3, 4, 5, 2, 2, 2, 2};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    int dp[n] = {0};
-    for (int i = 0; i < n; i++)
-        dp[i] = 1;
+    int lis[n];
+
+    lis[0] = 1;
     for (int i = 1; i < n; i++)
     {
+        lis[i] = 1;
         for (int j = 0; j < i; j++)
-        {
-            if (arr[i] > arr[j] && dp[i] < dp[j] + 1)
-                dp[i] = dp[j] + 1;
-        }
+            if (arr[i] > arr[j] && lis[i] < lis[j] + 1)
+                lis[i] = lis[j] + 1;
     }
-    for (int i = 0; i < n; i++)
-        cout << dp[i] << " ";
+    return *max_element(lis, lis + n);
+}
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        int arr[n];
+        for (int i = 0; i < n; i++)
+            cin >> arr[i];
+        printf("%d\n", lis(arr, n));
+    }
     return 0;
 }
